@@ -13,6 +13,7 @@ test('all resume content switches between RU and EN, including with blocked stor
   for (const repo of ['ArtGallary', 'Digitalcontrol']) assert.ok(html.includes(`href="https://github.com/Saven0k/${repo}"`));
   assert.ok(html.includes('href="mailto:romasav2017@gmail.com"'));
   assert.doesNotMatch(html, /knowledgeTitle|financeTitle|romasay2017/);
+  assert.ok(!html.includes('href="https://saven0k.github.io/Digitalcontrol/"'));
   const elements = [...html.matchAll(/data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\//g)].map(match => ({
     dataset: { i18n: match[1] }, innerText: match[2].replace(/<br[^>]*>/g, '\n'), textContent: match[2]
   }));
