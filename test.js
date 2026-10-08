@@ -10,6 +10,9 @@ test('all resume content switches between RU and EN, including with blocked stor
   assert.equal((html.match(/href="https:\/\/saven0k.github.io\/portfolio\/"/g) || []).length, 1);
   for (const skill of ['NestJS', 'Express', 'TypeScript', 'JavaScript']) assert.ok(html.includes(`<li>${skill}</li>`));
   assert.equal((html.match(/class="skill-category"/g) || []).length, 1);
+  for (const repo of ['ArtGallary', 'Digitalcontrol']) assert.ok(html.includes(`href="https://github.com/Saven0k/${repo}"`));
+  assert.ok(html.includes('href="mailto:romasav2017@gmail.com"'));
+  assert.doesNotMatch(html, /knowledgeTitle|financeTitle|romasay2017/);
   const elements = [...html.matchAll(/data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\//g)].map(match => ({
     dataset: { i18n: match[1] }, innerText: match[2].replace(/<br[^>]*>/g, '\n'), textContent: match[2]
   }));
