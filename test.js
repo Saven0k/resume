@@ -14,6 +14,8 @@ test('all resume content switches between RU and EN, including with blocked stor
   assert.ok(html.includes('href="mailto:romasav2017@gmail.com"'));
   assert.doesNotMatch(html, /knowledgeTitle|financeTitle|romasay2017/);
   assert.ok(!html.includes('href="https://saven0k.github.io/Digitalcontrol/"'));
+  assert.ok(html.includes('data-i18n="universityStatus"'));
+  assert.ok(html.includes('data-i18n="aboutTeam"'));
   const elements = [...html.matchAll(/data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\//g)].map(match => ({
     dataset: { i18n: match[1] }, innerText: match[2].replace(/<br[^>]*>/g, '\n'), textContent: match[2]
   }));
@@ -35,6 +37,8 @@ test('all resume content switches between RU and EN, including with blocked stor
   assert.equal(buttons[1].attributes['aria-pressed'], 'true');
   elements.forEach(element => assert.ok(element.textContent, `Missing English translation: ${element.dataset.i18n}`));
   assert.equal(elements.find(element => element.dataset.i18n === 'firstName').textContent, 'Roman');
+  assert.match(elements.find(element => element.dataset.i18n === 'universityStatus').textContent, /in progress/);
+  assert.match(elements.find(element => element.dataset.i18n === 'aboutTeam').textContent, /communication/);
   context.localStorage.setItem = () => { throw new Error('Storage blocked'); };
   assert.doesNotThrow(() => context.setLanguage('ru'));
   elements.forEach(element => assert.equal(element.textContent, element.innerText));

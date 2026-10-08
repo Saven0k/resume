@@ -39,10 +39,12 @@ h3{font-size:12px;font-weight:600;line-height:1.4}
 .job-points li:last-child{margin-bottom:0}
 .job-points li::marker{color:var(--green)}
 .education-content{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+.education-item+.education-item{margin-top:12px}
 .education-content h3{font-size:13px}
 .education-date{font-size:11px;color:var(--muted)}
 .education p,.about p{font-size:11px;color:#535954}
 .education p+p{margin-top:3px}
+.about p+p{margin-top:8px}
 .contact-item{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:10.5px;line-height:1.6}
 .contact-item span{min-width:0;overflow-wrap:anywhere}
 .contact-item svg{width:13px;height:13px;fill:none;stroke:var(--green);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
