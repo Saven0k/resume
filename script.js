@@ -1,10 +1,7 @@
 const english = {
-  skip: 'Skip to content', navExperience: 'Experience', navSkills: 'Skills', navContact: 'Contact',
-  firstName: 'Roman', lastName: 'Savenkov', fullName: 'Roman Savenkov',
-  heroDescription: 'I build intuitive interfaces.\nAnd care about how they work.',
-  location: 'Saint Petersburg', age: '18 years old', portfolio: 'View portfolio', write: 'Get in touch',
-  resume: 'RÉSUMÉ', portraitNote: 'Code. Details.\nUser experience.',
-  about: 'About me', aboutLead: 'From an idea and interface\nto a working application.',
+  skip: 'Skip to content', firstName: 'Roman', lastName: 'Savenkov',
+  location: 'Saint Petersburg', age: '18 years old', portfolioLabel: 'Portfolio', project: 'Project:',
+  about: 'About me',
   aboutText: 'Frontend developer with experience across the full web application development cycle. I enjoy analysing code, optimising performance and improving team workflows. I build user-friendly interfaces and contribute to backend development.',
   experience: 'Experience', knowledgeDate: 'March — December 2025', knowledgeTitle: 'Knowledge Base',
   college: 'Hexlet College', fullstackRole: 'Full Stack Developer',
@@ -17,14 +14,11 @@ const english = {
   financePoint1: 'Actively contributed to the web application interface.',
   financePoint2: 'Coordinated the team: assigned tasks, reviewed code and tracked deadlines.',
   financePoint3: 'Solved non-standard tasks and debugged complex technical issues to keep the product stable.',
-  teamwork: 'Teamwork', debugging: 'Debugging', education: 'Education',
+  education: 'Education',
   degree: 'Specialist diploma · Information Systems and Programming', educationTrack: 'Focus: Frontend Development',
-  graduation: 'Graduation year', contactEyebrow: 'GET IN TOUCH', contactTitle: 'Let’s get\nacquainted.', phone: 'PHONE',
-  allProjects: 'My projects', skills: 'Skills & stack', tools: 'TOOLS', practices: 'How I work',
-  methodsText: 'Agile and sequential approaches to development.', planningText: 'Tasks, deadlines and team planning.',
+  contacts: 'Contact', skills: 'Skills', practices: 'Methods & metrics',
   dataText: 'Working with metrics and making decisions based on data.', languages: 'Languages', english: 'English',
-  englishLevel: 'Upper-intermediate', closingEyebrow: 'THE NEXT STEP', closingTitle: 'Let’s start a conversation.',
-  telegramButton: 'Message on Telegram', print: 'Save as PDF ↗'
+  englishLevel: 'Upper-intermediate'
 };
 
 const translatedElements = [...document.querySelectorAll('[data-i18n]')];
@@ -44,6 +38,4 @@ function setLanguage(language) {
 }
 
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
-document.querySelector('#print').addEventListener('click', () => window.print());
-document.querySelector('#year').textContent = new Date().getFullYear();
 try { if (localStorage.getItem('resume-language') === 'en') setLanguage('en'); } catch { /* Default to Russian. */ }

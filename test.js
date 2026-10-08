@@ -6,6 +6,10 @@ import { runInNewContext } from 'node:vm';
 test('all resume content switches between RU and EN, including with blocked storage', () => {
   const html = readFileSync(new URL('index.html', import.meta.url), 'utf8');
   const script = readFileSync(new URL('script.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(html, /<header\b|FastAPI|Python|Django/i);
+  assert.equal((html.match(/href="https:\/\/saven0k.github.io\/portfolio\/"/g) || []).length, 1);
+  for (const skill of ['NestJS', 'Express', 'TypeScript', 'JavaScript']) assert.ok(html.includes(`<li>${skill}</li>`));
+  assert.equal((html.match(/class="skill-category"/g) || []).length, 1);
   const elements = [...html.matchAll(/data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\//g)].map(match => ({
     dataset: { i18n: match[1] }, innerText: match[2].replace(/<br[^>]*>/g, '\n'), textContent: match[2]
   }));
@@ -27,7 +31,6 @@ test('all resume content switches between RU and EN, including with blocked stor
   assert.equal(buttons[1].attributes['aria-pressed'], 'true');
   elements.forEach(element => assert.ok(element.textContent, `Missing English translation: ${element.dataset.i18n}`));
   assert.equal(elements.find(element => element.dataset.i18n === 'firstName').textContent, 'Roman');
-  assert.match(elements.find(element => element.dataset.i18n === 'heroDescription').textContent, /\n/);
   context.localStorage.setItem = () => { throw new Error('Storage blocked'); };
   assert.doesNotThrow(() => context.setLanguage('ru'));
   elements.forEach(element => assert.equal(element.textContent, element.innerText));
