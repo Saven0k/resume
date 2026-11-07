@@ -4,7 +4,7 @@ const english = {
   about: 'About me',
   aboutText: 'React and TypeScript frontend developer. I build interfaces with catalogues, user dashboards and admin panels, connecting user workflows to APIs. My experience includes full stack development with NestJS and Express, teamwork and code review.',
   aboutTeam: 'In teamwork, I focus on clear communication, aligning priorities and taking responsibility for deadlines and quality. I have experience assigning tasks and providing constructive code reviews, and welcome feedback and reasoned discussion of solutions.',
-  experience: 'Project experience', college: 'Hexlet College', frontendRole: 'Frontend Developer',
+  experience: 'Project experience', college: 'Hexlet College', frontendRole: 'Frontend Developer · 3+ years of experience',
   galleryTitle: 'Gallery — Art Platform', galleryRole: 'Frontend / Full Stack · Personal project',
   galleryDescription: 'A multi-role web platform for publishing artwork, browsing a catalogue and moderating content.',
   galleryPoint1: 'Built the artwork catalogue, artist profiles and a user dashboard for publishing and editing content with React and TypeScript.',
@@ -37,8 +37,8 @@ function setLanguage(language) {
   document.documentElement.lang = selected;
   document.title = selected === 'en' ? 'Roman Savenkov — Frontend Developer' : 'Роман Савенков — Frontend-разработчик';
   document.querySelector('meta[name="description"]').content = selected === 'en'
-    ? 'Roman Savenkov — frontend developer. Experience, projects, skills and contact details.'
-    : 'Роман Савенков — frontend-разработчик. Опыт, проекты, навыки и контакты.';
+    ? 'Roman Savenkov — frontend developer with 3+ years of experience. Projects, skills and contact details.'
+    : 'Роман Савенков — frontend-разработчик. 3+ года опыта, проекты, навыки и контакты.';
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === selected)));
   try { localStorage.setItem('resume-language', selected); } catch { /* Language switching also works when storage is unavailable. */ }
 }
